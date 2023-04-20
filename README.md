@@ -4,7 +4,7 @@
 
 **Note:** This modified integration repo is temporary, while waiting for my [PR](https://github.com/home-assistant/core/pull/91600) to be merged.
 
-[Ring](./screenshot.png)
+![Ring](./screenshot.png)
 
 ## **Addtional features**
 
