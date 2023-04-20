@@ -1,0 +1,26 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Thiết bị đã được cài thiết lập"
+        },
+        "error": {
+            "invalid_auth": "Lỗi đăng nhập",
+            "unknown": "Lỗi không mong muốn"
+        },
+        "step": {
+            "2fa": {
+                "data": {
+                    "2fa": "Mã 2-Factor"
+                },
+                "title": "Đăng nhập 2-Factor"
+            },
+            "user": {
+                "data": {
+                    "password": "Mật khẩu",
+                    "username": "Tên truy cập"
+                },
+                "title": "Đăng nhập cùng tài khoản Ring"
+            }
+        }
+    }
+}

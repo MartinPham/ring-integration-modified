@@ -1,0 +1,18 @@
+{
+  "domain": "ring_martinpham",
+  "name": "Ring (custom)",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["ffmpeg"],
+  "dhcp": [
+    {
+      "hostname": "ring*",
+      "macaddress": "0CAE7D*"
+    }
+  ],
+  "documentation": "https://www.home-assistant.io/integrations/ring",
+  "iot_class": "cloud_polling",
+  "loggers": ["ring_martinpham"],
+  "requirements": [],
+  "version": "0.0.1"
+}
