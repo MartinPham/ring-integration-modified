@@ -56,7 +56,9 @@ INTERCOM_INVITATIONS_ENDPOINT = LOCATIONS_ENDPOINT + "/invitations"
 INTERCOM_INVITATIONS_DELETE_ENDPOINT = LOCATIONS_ENDPOINT + "/invitations/{1}"
 INTERCOM_ALLOWED_USERS = LOCATIONS_ENDPOINT + "/users"
 INTERCOM_SETTINGS_ENDPOINT = "/devices/v1/devices/{0}/settings"
-INTERCOM_NOTIFICATION_SETTINGS_ENDPOINT = "/notification_settings/v1/doorbots/{0}/event_types/unlock"
+INTERCOM_NOTIFICATION_SETTINGS_ENDPOINT = (
+    "/notification_settings/v1/doorbots/{0}/event_types/unlock"
+)
 INTERCOM_SUBSCRIBE_ENDPOINT = "/clients_api/doorbots/{0}/subscribe"
 INTERCOM_UNSUBSCRIBE_ENDPOINT = "/clients_api/doorbots/{0}/unsubscribe"
 

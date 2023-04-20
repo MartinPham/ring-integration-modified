@@ -5,7 +5,12 @@ from datetime import timedelta
 from dataclasses import dataclass
 
 import requests
-from homeassistant.components.number import NumberDeviceClass, NumberEntity, NumberMode, NumberEntityDescription
+from homeassistant.components.number import (
+    NumberDeviceClass,
+    NumberEntity,
+    NumberMode,
+    NumberEntityDescription,
+)
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -13,7 +18,6 @@ import homeassistant.util.dt as dt_util
 
 from . import DOMAIN
 from .entity import RingEntityMixin
-
 
 
 SKIP_UPDATES_DELAY = timedelta(seconds=5)
@@ -70,7 +74,7 @@ class RingDoorVolume(RingEntityMixin, NumberEntity):
         self._no_updates_until = dt_util.utcnow()
 
         sensor_type = self.entity_description.key
-            
+
         if sensor_type == "mic_volume":
             self._attr_native_value = self._device.mic_volume
         if sensor_type == "voice_volume":
@@ -88,16 +92,17 @@ class RingDoorVolume(RingEntityMixin, NumberEntity):
         if sensor_type == "voice_volume":
             self._attr_native_value = self._device.voice_volume
         self.async_write_ha_state()
+
     @property
     def icon(self):
         """Return the icon."""
         sensor_type = self.entity_description.key
-            
+
         if sensor_type == "mic_volume":
             return "mdi:account-voice"
         if sensor_type == "voice_volume":
             return "mdi:bell-ring-outline"
-            
+
     def set_native_value(self, value: float) -> None:
         """Set new value."""
         sensor_type = self.entity_description.key
@@ -106,7 +111,7 @@ class RingDoorVolume(RingEntityMixin, NumberEntity):
         except requests.Timeout:
             _LOGGER.error("Time out setting %s volume to %s", self.entity_id, value)
             return
-            
+
         if sensor_type == "mic_volume":
             self._attr_native_value = self._device.mic_volume
         if sensor_type == "voice_volume":
@@ -115,7 +120,6 @@ class RingDoorVolume(RingEntityMixin, NumberEntity):
 
         self._no_updates_until = dt_util.utcnow() + SKIP_UPDATES_DELAY
         self.schedule_update_ha_state()
-
 
 
 BUTTON_TYPES: tuple[RingNumberEntityDescription, ...] = (

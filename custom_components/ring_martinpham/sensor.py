@@ -72,7 +72,7 @@ class RingSensor(RingEntityMixin, SensorEntity):
         sensor_type = self.entity_description.key
         if sensor_type == "volume":
             return self._device.volume
-            
+
         # if sensor_type == "mic_volume":
         #     return self._device.mic_volume
         # if sensor_type == "voice_volume":

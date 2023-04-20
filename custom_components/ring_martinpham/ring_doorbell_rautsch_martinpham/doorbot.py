@@ -177,7 +177,6 @@ class RingDoorBell(RingGeneric):
     def existing_doorbell_type_enabled(self, value):
         """Enable/disable the existing doorbell if Digital/Mechanical."""
         if self.existing_doorbell_type:
-
             if not isinstance(value, bool):
                 _LOGGER.error("%s", MSG_BOOLEAN_REQUIRED)
                 return None
@@ -207,7 +206,6 @@ class RingDoorBell(RingGeneric):
     def existing_doorbell_type_duration(self, value):
         """Set duration for Digital chime."""
         if self.existing_doorbell_type:
-
             if not (
                 (isinstance(value, int))
                 and (DOORBELL_VOL_MIN <= value <= DOORBELL_VOL_MAX)
@@ -349,7 +347,6 @@ class RingDoorBell(RingGeneric):
             # Video download needs a longer timeout to get the large video file
             req = self._ring.query(url, timeout=timeout)
             if req and req.status_code == 200:
-
                 if filename:
                     if os.path.isfile(filename) and not override:
                         _LOGGER.error("%s", FILE_EXISTS.format(filename))

@@ -90,15 +90,11 @@ class Auth:
             if data is not None:
                 kwargs["data"] = data
 
-        
-
         try:
             req = getattr(self._oauth, method.lower())(url, **kwargs)
         except TokenExpiredError:
             self._oauth.token = self.refresh_tokens()
             req = getattr(self._oauth, method.lower())(url, **kwargs)
-
-        # print(url, method, kwargs, self._oauth.access_token, req.json())
 
         req.raise_for_status()
 

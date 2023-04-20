@@ -16,8 +16,7 @@ from .const import (
     INTERCOM_SETTINGS_ENDPOINT,
     INTERCOM_NOTIFICATION_SETTINGS_ENDPOINT,
     INTERCOM_SUBSCRIBE_ENDPOINT,
-    INTERCOM_UNSUBSCRIBE_ENDPOINT
-
+    INTERCOM_UNSUBSCRIBE_ENDPOINT,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -130,19 +129,13 @@ class Other(RingGeneric):
 
         return None
 
-
     def set_volume(self, key, volume):
         """Set volume"""
 
         if self.kind in INTERCOM_KINDS:
             url = INTERCOM_SETTINGS_ENDPOINT.format(self.id)
-            payload = {
-                "volume_settings": {
-
-                }
-            }
+            payload = {"volume_settings": {}}
             payload["volume_settings"][key] = int(volume)
-            print(payload)
 
             self._ring.query(url, method="PATCH", json=payload).json()
             self._ring.update_devices()
@@ -165,7 +158,11 @@ class Other(RingGeneric):
         """Set alert notification"""
 
         if self.kind in INTERCOM_KINDS:
-            url = INTERCOM_SUBSCRIBE_ENDPOINT.format(self.id) if flag else INTERCOM_UNSUBSCRIBE_ENDPOINT.format(self.id)
+            url = (
+                INTERCOM_SUBSCRIBE_ENDPOINT.format(self.id)
+                if flag
+                else INTERCOM_UNSUBSCRIBE_ENDPOINT.format(self.id)
+            )
 
             self._ring.query(url, method="POST", json={})
             self._ring.update_devices()
