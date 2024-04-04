@@ -93,6 +93,13 @@ class Other(RingGeneric):
         return None
 
     @property
+    def user_id(self):
+        """Return user_id."""
+        if self.kind in INTERCOM_KINDS:
+            return self._attrs.get("health").get("user_id")
+        return None
+
+    @property
     def mic_volume(self):
         """Return mic volume."""
         if self.kind in INTERCOM_KINDS:
@@ -186,7 +193,7 @@ class Other(RingGeneric):
                         "command_timeout": 5,
                         "door_id": 0,
                         "issue_time": request_timestamp,
-                        "user_id": "00000000",
+                        "user_id": self.user_id,
                     },
                 },
             }
